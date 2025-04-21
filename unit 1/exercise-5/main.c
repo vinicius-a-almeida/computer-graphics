@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-void white_image(int width, int height, FILE* fptr);
+void red_T_image(int width, int height, FILE* fptr);
 
 int main(){
 
   // dimensoes da imagem
-  int width = 256;
-  int height = 256;
+  int width = 100;
+  int height = 100;
 
   FILE* fptr;
 
@@ -16,18 +16,23 @@ int main(){
     return 1;
   }
 
-  white_image(width, height, fptr);
+  red_T_image(width, height, fptr);
 
   fclose(fptr);
   return 0;
 }
 
-void white_image(int width, int height, FILE* fptr){
+void red_T_image(int width, int height, FILE* fptr){
     // Configurando o header do formato PPM
     fprintf(fptr, "P3\n %d \t %d\n 255\n", width, height);
     for (int i = 0; i < height; i++){ // Altura
       for (int j = 0; j < width; j++){ // Largura
-        fprintf(fptr, "255 \t 255 \t 255\n"); // branco
+        if (i == 0)
+            fprintf(fptr, "255 \t 0 \t 0\n");
+        if (j == 50)
+            fprintf(fptr, "255 \t 0 \t 0\n");
+        else
+            fprintf(fptr, "0 \t 0 \t 0\n");
       }
     }
   }

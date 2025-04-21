@@ -18,7 +18,7 @@ int main(){
 
   fptr = fopen("img.ppm", "rw+");
   if (fptr == NULL) {
-    printf("Error opening file, please check if the file exists\n");
+    printf("Error opening file, please check if the file exists and if has the name 'img.ppm'\n");
     return 1;
   }
   fprintf(fptr, "P3\n %d \t %d\n 255\n", width, height);
