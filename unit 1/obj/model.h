@@ -43,5 +43,7 @@
  void reflect(Vertex *vertices, int vcount, int axis);
  void translation(Vertex *vertices, int vcount, float tx, float ty, float tz);
  void scale(Vertex *vertices, int vcount, float sx, float sy, float sz);
+ void rotation(Vertex *vertices, int vcount, float rx, float ry, float rz);
+ void shear(Vertex *vertices, int vcount, float shx, float shy, float shz);
  
  #endif

@@ -29,10 +29,12 @@
 
 
 
-     // rotação e cisalhamento.
+     // cisalhamento.
      reflect(vertices, vcount, 'y');
      translation(vertices, vcount, 0.3f, 0.2f, -0.1f);
-     scale(vertices, vcount, 0.2f, 0.2f, 0.2f);
+     scale(vertices, vcount, 1.2f, 1.2f, 1.2f);
+     rotation(vertices, vcount, 1.0f, -3.0f, 2.0f);
+     shear(vertices, vcount, 1.5f, 0.0f, 1.3f);  // shx=0.5, shy=0.0, shz=0.3
      //reflect(vertices, vcount);
      //flip(vertices, vcount);
  

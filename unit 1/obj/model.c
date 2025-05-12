@@ -146,3 +146,49 @@
       vertices[i].z *= sz;
     }
   }
+
+  void rotation(Vertex *vertices, int vcount, float rx, float ry, float rz){
+    float cosX = cosf(rx);
+    float sinX = sinf(rx);
+    float cosY = cosf(ry);
+    float sinY = sinf(ry);
+    float cosZ = cosf(rz);
+    float sinZ = sinf(rz);
+    
+    for (int i = 0; i < vcount; i++) {
+        float x = vertices[i].x;
+        float y = vertices[i].y;
+        float z = vertices[i].z;
+        
+        // Rotação em torno do eixo X
+        float y1 = y * cosX - z * sinX;
+        float z1 = y * sinX + z * cosX;
+        
+        // Rotação em torno do eixo Y
+        float x2 = x * cosY + z1 * sinY;
+        float z2 = -x * sinY + z1 * cosY;
+        
+        // Rotação em torno do eixo Z
+        float x3 = x2 * cosZ - y1 * sinZ;
+        float y3 = x2 * sinZ + y1 * cosZ;
+        
+        vertices[i].x = x3;
+        vertices[i].y = y3;
+        vertices[i].z = z2;
+    }
+  }
+
+
+  void shear(Vertex *vertices, int vcount, float shx, float shy, float shz) {
+    for (int i = 0; i < vcount; i++) {
+        float x = vertices[i].x;
+        float y = vertices[i].y;
+        float z = vertices[i].z;
+        
+        vertices[i].x = x + shy * y + shz * z;
+      
+        vertices[i].y = y + shx * x + shz * z;
+
+        vertices[i].z = z + shx * x + shy * y;
+    }
+}
